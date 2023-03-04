@@ -1,10 +1,5 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
         # brut force solution
         for i in range(len(nums)):
             c = target-nums[i]
@@ -15,17 +10,23 @@ class Solution(object):
            
                     
                     
-      # hash map solution              
-      d = {}
-        for i, n in enumerate(nums):
-            m = target - n
-            if m in d:
-                return [d[m], i]
-            else:
-                d[n] = i
-               #On complexity
+    # hash map solution   
+    def twoSum(self, nums, target):
+        hashmap = {}
+        # populate the hash map
+        for i in range(len(nums)):
+            hashmap[nums[i]] = i
+
+        for i in range(len(nums)):
+            # checking if complement exist in hmap
+            # if it does check index is diff 
+            # eg: [3,3] {3:0, 3:1}
+            complement = target - nums[i]
+            if complement in hashmap and hashmap[complement] != i:
+                return [i, hashmap[complement]]           
+      
+    #O(n) complexity
  #https://www.youtube.com/watch?v=KLlXCFG5TnA  solution explation
-                    
                     
                     
                     
